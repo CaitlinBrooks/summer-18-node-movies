@@ -12,6 +12,15 @@ server.use(bp.urlencoded({
 
 
 //create an endpoint for getting a list of movies
+server.get('/movies', (req, res, next) => {
+  let movie = movies.find(m => m.name == req.params.title)
+  if (movie) {
+    return res.send(movies)
+  }
+  return res.status(400).send({
+    error: 'no movies here'
+  })
+})
 
 //create an endpoint for finding a movie by its index
 
