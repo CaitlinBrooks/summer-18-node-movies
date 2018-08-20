@@ -23,9 +23,18 @@ server.get('/movies', (req, res, next) => {
 })
 
 //create an endpoint for finding a movie by its index
+server.get('/movies/title/byid/:id', (req, res, next) => {
+  let movie = movies.find(m => m.id == req.params.id)
+  if (movie) {
+    return res.send(movie)
+  }
+  return res.status(400).send({
+    error: 'no movies with that id'
+  })
+})
 
 //create an endpoint for finding a movie by its title
-server.get('/movies/title/:title', (req, res, next) => {
+server.get('/movies/title/bytitle/:title', (req, res, next) => {
   let movie = movies.find(m => m.name == req.params.title)
   if (movie) {
     return res.send(movie)
