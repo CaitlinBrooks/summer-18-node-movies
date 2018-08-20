@@ -40,7 +40,7 @@ server.get('/movies/title/bytitle/:title', (req, res, next) => {
     return res.send(movie)
   }
   return res.status(400).send({
-    error: 'no movie'
+    error: 'no movies by that title'
   })
 })
 
